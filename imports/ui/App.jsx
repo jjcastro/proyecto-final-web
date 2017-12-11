@@ -82,11 +82,12 @@ class App extends Component {
                               <div className="prompt">
 
                                 <div className="logo">
-                                  <img src="/white-music-512.png"/>
+                                  <img alt="logo" src="/white-music-512.png"/>
                                 </div><br/>
                                 <h1>SongExplorer</h1>
                                 <p>Enter a list of artists to get started!</p>
-                                <input type="text"
+                                <input aria-label="Search bar"
+                                type="text"
                                 placeholder={`Beyoncé, Shakira`}
                                 value={this.state.name}
                                 onChange={this.handleNameChange}
@@ -114,7 +115,7 @@ class App extends Component {
                             <div className="prompt">
 
                               <div className="logo">
-                                <img src="/white-music-512.png"/>
+                                <img alt="logo" src="/white-music-512.png"/>
                               </div><br/>
                               <h1>SongExplorer</h1>
                               <p>Sign in to get started!</p>
