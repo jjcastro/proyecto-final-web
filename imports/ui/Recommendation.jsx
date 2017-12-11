@@ -11,7 +11,6 @@ class Recommendation extends Component {
               <h2>LATEST GAMES</h2>
               <div className="game-box-container">
                 {this.props.games.map(function(listValue){
-                  // return <GameBox key={listValue._id} game={listValue} handler={handler}/>;
                 })}
               </div>
             </div>
