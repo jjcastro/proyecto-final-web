@@ -99,7 +99,7 @@ class App extends Component {
                                   <div className="artist" key={idx}>
                                     <div className="iframeholder">
                                       <div className="videoWrapper">
-                                          <iframe src={artist.yUrl} frameBorder = "0" height="" width="">#document</iframe>
+                                          <iframe title={artist.Name} src={artist.yUrl} frameBorder = "0" height="" width="">#document</iframe>
                                       </div>
                                     </div>
                                     <div className="description">
