@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-class Leaderboard extends Component {
+class Recommendation extends Component {
   
     render(){
       var handler = this.props.handler;
@@ -21,9 +21,9 @@ class Leaderboard extends Component {
     }
 }
  
-Leaderboard.propTypes = {
+Recommendation.propTypes = {
   games: PropTypes.array.isRequired,
   handler: PropTypes.func.isRequired
 };
 
-export default Leaderboard;
+export default Recommendation;

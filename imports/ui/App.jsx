@@ -4,8 +4,10 @@ import ReactDOM from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import SavedPlaylist from "./SavedPlaylist.jsx";
-import Leaderboard from "./Leaderboard.jsx";
+import Recommendation from "./Recommendation.jsx";
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+
+import { Recommendations } from '../api/recommendations.js';
 
 // import $ from ‘jquery’;
 // import { findDOMNode } from ‘react-dom’;
@@ -15,23 +17,28 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            activeGameId: undefined,
-            creating: false,
+            recommendations: false,
             name: '',
             list: []
         }
         this.handle = this.handle.bind(this);
         this.getSongList = this.getSongList.bind(this);
+        this.recommendations = this.recommendations.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this)
+    }
+
+    recommendations() {
+      let value = this.state.recommendations;
+      this.setState({recommendations: !value})
     }
 
     handleNameChange(evt) {
       this.setState({ name: evt.target.value });
-      console.log(this.state);
+      // console.log(this.state);
     }
 
     handle() {
-      console.log(this.getSongList())
+      // console.log(this.getSongList())
     }
 
     getSongList() {
@@ -39,7 +46,15 @@ class App extends Component {
       $.getJSON('https://www.tastekid.com/api/similar?k=293048-Songexpl-Z7I5SOF5&q=' + this.state.name + '&info=1&type=music&callback=?')
         .then(function(data) {
           _this.setState({list: data.Similar.Results});
-          console.log(data.Similar.Results);
+          // console.log(data.Similar.Results);
+
+          // Recommendations.insert({
+          //   user: _this.props.currentUser,
+          //   query: _this.state.name,
+          //   results: data.Similar.Results
+          // });
+
+          Meteor.call('recommendations.insertRecommentation', _this.props.currentUser, data.Similar.Results, _this.state.name);
         });
     }
     
@@ -50,10 +65,16 @@ class App extends Component {
                     <AccountsUIWrapper />
                 </div>
                 <header>
+                { this.props.currentUser ?
+                  <a className="btn" onClick={this.recommendations}>{
+                    this.state.recommendations ? <span>Go Back</span> :
+                    <span>Recommendation history</span>
+                  }</a> : <div></div>
+                }
                 </header>
 
                 <div className="app-body">
-                { this.state.creating ?
+                { this.state.recommendations ?
                     <SavedPlaylist handler={this.submit}/> :
                     <div>
                         { this.props.currentUser ?

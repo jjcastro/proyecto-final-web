@@ -12,6 +12,37 @@ input, a.btn {
     font-family: 'Raleway';
 }
 
+.artistsaved > div {
+    width: 50%;
+    float: left;
+}
+
+.artistsaved span {
+    font-size: 1.8em;
+}
+
+.artistsaved a.btn.sm {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.artistsaved .description {
+    padding-bottom: 30px;
+}
+
+h2, h5 {
+    text-align: center;
+    font-family: 'Raleway';
+}
+
+h5 {
+
+    margin-bottom: 5px;
+    border-top: 1px solid #ccc;
+    padding-top: 40px;
+    margin-top: 40px;
+}
+
 .artist > div {
     width: 50%;
     padding: 30px;
@@ -93,4 +124,10 @@ h1 {
 .login {
     font-size: 1.35em;
     padding: 15px;
+}
+
+header a {
+    position: absolute;
+    right: 20px;
+    top: 20px;
 }

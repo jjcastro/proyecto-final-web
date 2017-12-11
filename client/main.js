@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 
-import { Games } from '../imports/api/games.js';
+import { Recommendations } from '../imports/api/recommendations.js';
 
 import '../imports/startup/accounts-config.js';
 import App from '../imports/ui/App.jsx';
