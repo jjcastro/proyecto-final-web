@@ -8,10 +8,6 @@ import Recommendation from "./Recommendation.jsx";
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 import { Recommendations } from '../api/recommendations.js';
-
-// import $ from ‘jquery’;
-// import { findDOMNode } from ‘react-dom’;
-
  
 class App extends Component {
     constructor(props){
@@ -34,11 +30,9 @@ class App extends Component {
 
     handleNameChange(evt) {
       this.setState({ name: evt.target.value });
-      // console.log(this.state);
     }
 
     handle() {
-      // console.log(this.getSongList())
     }
 
     getSongList() {
@@ -46,13 +40,6 @@ class App extends Component {
       $.getJSON('https://www.tastekid.com/api/similar?k=293048-Songexpl-Z7I5SOF5&q=' + this.state.name + '&info=1&type=music&callback=?')
         .then(function(data) {
           _this.setState({list: data.Similar.Results});
-          // console.log(data.Similar.Results);
-
-          // Recommendations.insert({
-          //   user: _this.props.currentUser,
-          //   query: _this.state.name,
-          //   results: data.Similar.Results
-          // });
 
           Meteor.call('recommendations.insertRecommentation', _this.props.currentUser, data.Similar.Results, _this.state.name);
         });
@@ -132,13 +119,11 @@ class App extends Component {
 }
 
 App.propTypes = {
-  // games: PropTypes.array.isRequired,
   currentUser: PropTypes.object
 };
 
 export default createContainer((props) => {
   return {
-    // games: Games.find({  }, { sort: { score: -1 }, limit: 10 }).fetch(),
     currentUser: Meteor.user()
   };
 }, App);
