@@ -12,6 +12,7 @@ import { Recommendations } from '../api/recommendations.js';
 // import $ from ‘jquery’;
 // import { findDOMNode } from ‘react-dom’;
 
+<!-- Julio Poveda: The code is organized because you use functions that do specific things. This is good because it makes the code readable -->
  
 class App extends Component {
     constructor(props){
